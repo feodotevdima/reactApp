@@ -1,23 +1,42 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { startTransition } from "react";
+import IndexPaje from "./pajes/IndexPaje";
+import SingUpPaje from "./pajes/SingUpPaje";
+import LoginPaje from "./pajes/LogInPaje";
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
-function App() {
+const url="http://localhost:5140/User";
+
+async function GetUsers()
+{
+  const t =sessionStorage.getItem("tokenKey");
+  let response = await fetch(url,{
+    method: "GET",
+    headers: 
+    {
+        "Accept": "application/json",
+        "Authorization": "Bearer " + t
+    }
+  });
+  if(response.ok)
+  {
+    let json = await response.json();
+    console.log(json);
+  }
+}
+
+function App() 
+{
+  //const json = GetUsers();
+  const [j, setj] = React.useState(GetUsers());
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      {/* <SingUpPaje /> */}
+      <BrowserRouter>
+        <Routes>
+          <Route path="/singup" element={<SingUpPaje />} />
+          <Route path="/login" element={<LoginPaje />} />
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }
