@@ -1,6 +1,6 @@
 import React from "react";
 
-const url="http://localhost:5140/User/LogIn";
+const url="https://localhost:7002/Auth/login";
 
 
 async function PostUsers(email, pass)
@@ -14,20 +14,23 @@ async function PostUsers(email, pass)
       'Content-Type': 'application/json'
     },
     body: JSON.stringify({
-      email: email,
+      login: email,
       password: pass
     })
   });
+  console.log(response.status)
   if(response.ok)
   {
     let json = await response.json();
-    sessionStorage.setItem("tokenKey", json.token);
-    console.log("ok");
+    sessionStorage.setItem("accessToken", json.accessToken);
+    sessionStorage.setItem("refreshToken", json.refreshToken);
+    console.log(sessionStorage.accessToken);
+    console.log(json.refreshToken);
   }
 }
 
 
-function FormToSingUp()
+function FormToLogin()
 {
     const[email, setEmail]=React.useState("");
     const[pass, setPass]=React.useState("");
@@ -66,4 +69,4 @@ function FormToSingUp()
     );
   }
     
-    export default FormToSingUp;
+    export default FormToLogin;

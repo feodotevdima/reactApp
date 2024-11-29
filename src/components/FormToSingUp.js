@@ -1,6 +1,6 @@
 import React from "react";
 
-const url="http://localhost:5140/User/SingUp";
+const url="http://localhost:5140/User/sing-up";
 
 
 async function PostUsers(name, email, pass)

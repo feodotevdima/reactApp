@@ -4,7 +4,7 @@ import SingUpPaje from "./pajes/SingUpPaje";
 import LoginPaje from "./pajes/LogInPaje";
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
-const url="http://localhost:5140/User";
+const url="http://localhost:5140/User/all";
 
 async function GetUsers()
 {
