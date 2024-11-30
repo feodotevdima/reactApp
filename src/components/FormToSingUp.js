@@ -1,11 +1,11 @@
 import React from "react";
 
-const url="http://localhost:5140/User/sing-up";
+const SingUpUrl="https://localhost:7001/User/add";
+const LoginUrl="https://localhost:7002/Auth/login";
 
-
-async function PostUsers(name, email, pass)
+async function SingUpUser(name, email, pass)
 {
-  const response = await fetch(url,
+  const response = await fetch(SingUpUrl,
   {
     method: "POST",
     headers:     
@@ -19,13 +19,34 @@ async function PostUsers(name, email, pass)
       password: pass
     })
   });
+
   if(response.ok)
   {
-    let json = await response.json();
-    sessionStorage.setItem("tokenKey", json.token);
-    console.log("ok");
+    const response2 = await fetch(LoginUrl,
+    {
+      method: "POST",
+      headers:     
+      {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        login: email,
+        password: pass
+      })
+    });
+    console.log(response2.status)
+    if(response2.ok)
+    {
+      let json = await response2.json();
+      sessionStorage.setItem("accessToken", json.accessToken);
+      sessionStorage.setItem("refreshToken", json.refreshToken);
+      console.log(sessionStorage.accessToken);
+      console.log(json.refreshToken);
+    }
   }
 }
+
 
 
 function FormToSingUp()
@@ -46,7 +67,7 @@ function FormToSingUp()
     const handleSubmit = (e) => {
       e.preventDefault();
       if(isValide())
-        PostUsers(name, email, pass);
+        SingUpUser(name, email, pass);
       else
         console.log("введите все поля");
 
