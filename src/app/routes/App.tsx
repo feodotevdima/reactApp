@@ -11,12 +11,14 @@ function App()
   return (
     <div>
       <Head />
+      <div className='app'>
       <BrowserRouter>
         <Routes>
           <Route path="/singup" element={<SingUpPaje />} />
           <Route path="/login" element={<LoginPaje />} />
         </Routes>
       </BrowserRouter>
+      </div>
     </div>
   );
 }

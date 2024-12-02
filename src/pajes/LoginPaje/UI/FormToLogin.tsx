@@ -33,8 +33,8 @@ function FormToLogin()
 
 
     return (
-      <div className="F">
-        <form onSubmit={handleSubmit}>
+      <div>
+        <form onSubmit={handleSubmit} className="fon">
           <p>
             <label>Почта </label>
             <input type="text" value={email} onChange={(e) => setEmail(e.target.value)}></input>

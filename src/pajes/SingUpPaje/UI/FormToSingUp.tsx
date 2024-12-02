@@ -33,8 +33,8 @@ function FormToSingUp()
 
 
     return (
-      <div className="F">
-        <form onSubmit={handleSubmit}>
+      <div>
+        <form onSubmit={handleSubmit}  className="fon">
           <p>
             <label>Имя </label>
             <input type="text" value={name} onChange={(e) => setName(e.target.value)}></input>
