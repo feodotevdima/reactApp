@@ -15,15 +15,12 @@ async function LoginUser(email: string, pass: string)
       password: pass
     })
   });
-  console.log(response.status)
+    
   if(response.ok)
   {
     let json = await response.json();
     sessionStorage.setItem("accessToken", json.accessToken);
     sessionStorage.setItem("refreshToken", json.refreshToken);
-    window.location.reload();
-    console.log(sessionStorage.accessToken);
-    console.log(json.refreshToken);
   }
   return response.status;
 }

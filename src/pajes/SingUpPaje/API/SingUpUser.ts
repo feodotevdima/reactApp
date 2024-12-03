@@ -21,10 +21,10 @@ async function SingUpUser(name: string, email: string, pass: string)
 
   if(responseAdd.ok)
   {
-    const responseLogin = LoginUser(email, pass);
+    const responseLogin = await LoginUser(email, pass);
     return responseLogin;
   }
-  return responseAdd;
+  return responseAdd.status;
 }
 
 export default SingUpUser;

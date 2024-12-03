@@ -1,11 +1,13 @@
 import React from "react";
 import SingUpUser from "../API/SingUpUser.ts";
+import Eror from "../../../shared/Eror.tsx";
 
 function FormToSingUp()
 {
     const[name, setName]=React.useState("");
     const[email, setEmail]=React.useState("");
     const[pass, setPass]=React.useState("");
+    const[status, setStatus]=React.useState("");
 
     const isValide = () =>{
       if (name.length<2)
@@ -16,25 +18,39 @@ function FormToSingUp()
         return false;
       return true;
     }
-    const handleSubmit = (e) => {
+
+    const handleSubmit = async (e) => {
       e.preventDefault();
       if(!isValide())
-        console.log("введите все поля");
+      {
+        setStatus("Заполните все поля");
+        return null
+      }
       if(sessionStorage.accessToken!=null)
         if(sessionStorage.accessToken.length>1)
         {
-          console.log("Пользователь уже зарегестрирован");
+          setStatus("Вы уже зашли");
           return null
         }
-      const response = SingUpUser(name, email, pass);
-      console.log(response);
+
+      const response: number = await SingUpUser(name, email, pass);
+      
+      if((response===400) || (response===401))
+        setStatus("Пользователь с такой почтой уже есть");
+      
+      if(response===200)
+        window.location.replace("http://localhost:3000");
+
+      return response;
 
     }
 
 
     return (
       <div>
+        <Eror text={status}/>
         <form onSubmit={handleSubmit}  className="fon">
+          <h3>Регистрация</h3>
           <p>
             <label>Имя </label>
             <input type="text" value={name} onChange={(e) => setName(e.target.value)}></input>

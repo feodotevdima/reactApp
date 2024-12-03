@@ -4,7 +4,7 @@ import FormToLogin from "./UI/FormToLogin.tsx";
 function LoginPaje() 
 {
     return (
-      <div className="LoginPaje">
+      <div>
         <FormToLogin />
       </div>
     );

@@ -10,6 +10,7 @@ function Head()
             return (
                 <header>
                     <nav>
+                        <a href="http://localhost:3000/">Главная</a>
                         <LogOutButton />
                     </nav>
                 </header>
@@ -18,6 +19,7 @@ function Head()
     return (
         <header>
             <nav>
+                <a href="http://localhost:3000/">Главная</a>
                 <LoginButton />
             </nav>
         </header>
