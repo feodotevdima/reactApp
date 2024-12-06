@@ -5,8 +5,8 @@ const SingUpUrl="https://localhost:7003/Wish";
 async function AddWish(present : string, price : number)
 {
 
-  const presents = ['apple', 'orange', 'banana'];
-  const prices = [1, 4, 6];
+  const presents = 'ojpojp';
+  const prices = '55';
 
   let responseAdd = await fetch(SingUpUrl,
   {
@@ -23,7 +23,9 @@ async function AddWish(present : string, price : number)
     })
   });
   console.log('resh')
-  console.log(responseAdd.status);
+  const j = await responseAdd.json()
+  console.log(j);
+  console.log(j.id);
   return responseAdd.status;
 }
 
