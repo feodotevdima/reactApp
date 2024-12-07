@@ -3,6 +3,7 @@ import SingUpPaje from '../../pajes/SingUpPaje/SingUpPaje.tsx';
 import LoginPaje from '../../pajes/LoginPaje/LoginPaje.tsx';
 import MainPaje from '../../pajes/MainPaje/MainPaje.tsx';
 import Paje404 from '../../pajes/Paje404/Paje404.tsx';
+import AddWishPaje from '../../pajes/AddWishPaje/AddWishPaje.tsx';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Head from '../../widgetes/head.tsx';
 
@@ -19,6 +20,7 @@ function App()
           <Route path="/singup" element={<SingUpPaje />} />
           <Route path="/login" element={<LoginPaje />} />
           <Route path="/" element={<MainPaje />} />
+          <Route path="/add" element={<AddWishPaje />} />
         </Routes>
       </BrowserRouter>
       </div>

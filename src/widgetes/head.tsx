@@ -4,25 +4,14 @@ import LoginButton from "./components/LoginButton.tsx";
 
 function Head()
 {
-    if(sessionStorage.accessToken!=null)
-        if(sessionStorage.accessToken.length>1)
-        {
-            return (
-                <header>
-                    <nav>
-                        <a href="http://localhost:3000/">Главная</a>
-                        <LogOutButton />
-                    </nav>
-                </header>
-            );
-        }
+    const[auth, setAuth]=React.useState(sessionStorage.accessToken);
     return (
         <header>
             <nav>
                 <a href="http://localhost:3000/">Главная</a>
-                <LoginButton />
+                {auth ? <LogOutButton onChange={(i) => setAuth(i)}/> : <LoginButton />}
             </nav>
         </header>
     );
-  }
+}
   export default Head;

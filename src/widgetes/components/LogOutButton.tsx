@@ -16,16 +16,14 @@ async function logout()
       AccessToken: sessionStorage.accessToken
     })
   });
-  console.log(response.status)
   if(response.ok)
   {
     sessionStorage.setItem("accessToken", "");
     sessionStorage.setItem("refreshToken", "");
-    window.location.reload();
   }
 }
 
-function LogOutButton()
+function LogOutButton({onChange})
 {
     const isValide = () =>{
       if (((sessionStorage.accessToken===null)&&(sessionStorage.refreshToken===null))||((sessionStorage.accessToken==="")&&(sessionStorage.refreshToken==="")))
@@ -37,9 +35,18 @@ function LogOutButton()
     const handleSubmit = () => {
       if(isValide())
         logout();
+        onChange(null);
     }
+
+    const Add = (e) => {
+      window.location.replace("http://localhost:3000/add");
+    }
+
     return (
+      <>
         <button type="button" onClick={handleSubmit}>Выйти</button>
+        <button type="button" onClick={Add}>Добавить подарок</button>
+      </>
     );
   }
   export default LogOutButton;

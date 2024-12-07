@@ -1,51 +1,41 @@
 import React from "react";
 
-const SingUpUrl="https://localhost:7003/Wish";
-
-async function AddWish(present : string, price : number)
+const SingUpUrl="https://localhost:7003/Wish/all";
+async function getWishs()
 {
-
-  const presents = 'ojpojp';
-  const prices = '55';
-
   let responseAdd = await fetch(SingUpUrl,
   {
-    method: "POST",
+    method: "GET",
     headers:     
     {
       'Accept': 'application/json',
       'Authorization': "Bearer " + sessionStorage.accessToken,
       'Content-Type': 'application/json'
     },
-    body: JSON.stringify({
-      "present": presents,
-      "price": prices
-    })
   });
-  console.log('resh')
   const j = await responseAdd.json()
   console.log(j);
   console.log(j.id);
-  return responseAdd.status;
+  return j;
 }
 
-function IndexPaje() 
+
+function MainPaje() 
 {
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    if(sessionStorage.accessToken==null)
-    {
-      return null
-    }
-  
-    const status : number =await AddWish('aaaaaaa', 222);
+  let json="";
+  const feathWishs = async () => {
+    const response =await getWishs();
+    json=response;
   }
+
+  feathWishs();
+
 
     return (
       <div className="IndexPaje">
-        <button type="submit" onClick={handleSubmit}>ihoioijioj</button>
+        
       </div>
     );
   }
   
-  export default IndexPaje;
+  export default MainPaje;
