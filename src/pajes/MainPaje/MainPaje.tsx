@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 const SingUpUrl="https://localhost:7003/Wish/all";
+
 async function getWishs()
 {
-  let responseAdd = await fetch(SingUpUrl,
+  let response = await fetch(SingUpUrl,
   {
     method: "GET",
     headers:     
@@ -13,27 +14,34 @@ async function getWishs()
       'Content-Type': 'application/json'
     },
   });
-  const j = await responseAdd.json()
-  console.log(j);
-  console.log(j.id);
+  const j = await response.json()
+  //console.log(j)
   return j;
 }
 
 
 function MainPaje() 
 {
-  let json="";
-  const feathWishs = async () => {
-    const response =await getWishs();
-    json=response;
-  }
+  const[wish, setWish]=React.useState([{id: 0,userId: 0, userName: "0", present: "0", price: 0}]);
 
-  feathWishs();
+  useEffect(()=>{
+    const get = async () =>{
+      const data = await getWishs();
+      setWish(data);
+    }
+    get();
+  }, []);
 
+  
+  const listItems = wish.map((wish) =>
+    <li key={wish.id}>{wish.present}</li>
+  );
 
-    return (
+  return (
       <div className="IndexPaje">
-        
+      <ul>
+        {listItems}
+      </ul>
       </div>
     );
   }
