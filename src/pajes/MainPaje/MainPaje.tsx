@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import UserWishs from "./UI/UserWishs.tsx";
 
 const SingUpUrl="https://localhost:7003/Wish/all";
 
@@ -15,14 +16,13 @@ async function getWishs()
     },
   });
   const j = await response.json()
-  //console.log(j)
   return j;
 }
 
 
 function MainPaje() 
 {
-  const[wish, setWish]=React.useState([{id: 0,userId: 0, userName: "0", present: "0", price: 0}]);
+  const[wish, setWish]=React.useState([[{id: 0,userId: 0, userName: "0", present: "0", price: 0}]]);
 
   useEffect(()=>{
     const get = async () =>{
@@ -32,9 +32,12 @@ function MainPaje()
     get();
   }, []);
 
-  
-  const listItems = wish.map((wish) =>
-    <li key={wish.id}>{wish.present}</li>
+  const listItems = wish.map((wis) =>
+    <li key={wis[0].userId}>
+      <ul>
+        <UserWishs wishs={wis} />
+      </ul>
+    </li>
   );
 
   return (
