@@ -1,21 +1,23 @@
 import React, { useEffect } from "react";
 import UserWishs from "./UI/UserWishs.tsx";
+import { getToken } from "../../shared/TokenProvider.ts";
 
 const SingUpUrl="https://localhost:7003/Wish/all";
 
 async function getWishs()
 {
+  const token= await getToken();
   let response = await fetch(SingUpUrl,
   {
     method: "GET",
     headers:     
     {
       'Accept': 'application/json',
-      'Authorization': "Bearer " + sessionStorage.accessToken,
+      'Authorization': "Bearer " + token,
       'Content-Type': 'application/json'
     },
   });
-  const j = await response.json()
+  const j = await response.json();
   return j;
 }
 
@@ -33,18 +35,16 @@ function MainPaje()
   }, []);
 
   const listItems = wish.map((wis) =>
-    <li key={wis[0].userId}>
+    <button key={wis[0].userId}>
       <ul>
         <UserWishs wishs={wis} />
       </ul>
-    </li>
+    </button>
   );
 
   return (
       <div className="IndexPaje">
-      <ul>
         {listItems}
-      </ul>
       </div>
     );
   }

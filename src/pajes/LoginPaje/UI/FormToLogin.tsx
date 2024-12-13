@@ -1,5 +1,5 @@
 import React from "react";
-import LoginUser from "../../../shared/LoginUser.ts";
+import { Login } from "../../../shared/TokenProvider.ts";
 import Eror from "../../../shared/Eror.tsx";
 
 function FormToLogin()
@@ -29,7 +29,7 @@ function FormToLogin()
           setStatus("Вы уже зашли");
           return null
         }
-      const response: number = await LoginUser(email, pass);
+      const response: number = await Login(email, pass);
       
       if((response===400) || (response===401))
         setStatus("Неверный логин или пароль");

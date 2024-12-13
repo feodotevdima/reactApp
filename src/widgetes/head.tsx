@@ -1,15 +1,21 @@
 import React from "react";
+import { useEffect } from "react";
 import LogOutButton from "./components/LogOutButton.tsx";
 import LoginButton from "./components/LoginButton.tsx";
 
 function Head()
 {
-    const[auth, setAuth]=React.useState(sessionStorage.accessToken);
+    const[auth, setAuth]=React.useState(sessionStorage.accessToken!=null && sessionStorage.accessToken!="");
+    
+    useEffect(()=>{
+        setAuth(sessionStorage.accessToken!=null && sessionStorage.accessToken!="")
+      }, [sessionStorage.accessToken]);
+
     return (
         <header>
             <nav>
                 <a href="http://localhost:3000/">Главная</a>
-                {auth ? <LogOutButton onChange={(i) => setAuth(i)}/> : <LoginButton />}
+                {auth ? <LogOutButton /> : <LoginButton />}
             </nav>
         </header>
     );

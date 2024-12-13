@@ -1,22 +1,23 @@
 import React from "react";
 import Eror from "../../shared/Eror.tsx";
-
+import { getToken } from "../../shared/TokenProvider.ts";
 const SingUpUrl="https://localhost:7003/Wish";
 
 async function addWish(present : string, price: number)
 {
+  const token= await getToken();
   let responseAdd = await fetch(SingUpUrl,
   {
     method: "POST",
     headers:     
     {
       'Accept': 'application/json',
-      'Authorization': "Bearer " + sessionStorage.accessToken,
+      'Authorization': "Bearer " + token,
       'Content-Type': 'application/json'
     },
     body: JSON.stringify({
       "present": present,
-      "price": price
+      "price": String(price)
     })
   });
   const j = await responseAdd.json()

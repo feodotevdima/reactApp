@@ -1,30 +1,9 @@
 import React from "react";
+import { Logout } from "../../shared/TokenProvider.ts";
 
-const url="https://localhost:7002/Auth/logout";
-
-async function logout()
+function LogOutButton()
 {
-  const response = await fetch(url,
-  {
-    method: "DELETE",
-    headers:     
-    {
-      'Accept': 'application/json',
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({
-      AccessToken: sessionStorage.accessToken
-    })
-  });
-  if(response.ok)
-  {
-    sessionStorage.setItem("accessToken", "");
-    sessionStorage.setItem("refreshToken", "");
-  }
-}
-
-function LogOutButton({onChange})
-{
+  
     const isValide = () =>{
       if (((sessionStorage.accessToken===null)&&(sessionStorage.refreshToken===null))||((sessionStorage.accessToken==="")&&(sessionStorage.refreshToken==="")))
       {
@@ -32,10 +11,12 @@ function LogOutButton({onChange})
       }
       return true;
     }
-    const handleSubmit = () => {
+    const out = async () => {
       if(isValide())
-        logout();
-        onChange(null);
+      {
+        await Logout();
+        window.location.replace("http://localhost:3000");
+      }
     }
 
     const Add = (e) => {
@@ -44,7 +25,7 @@ function LogOutButton({onChange})
 
     return (
       <>
-        <button type="button" onClick={handleSubmit}>Выйти</button>
+        <button type="button" onClick={out}>Выйти</button>
         <button type="button" onClick={Add}>Добавить подарок</button>
       </>
     );

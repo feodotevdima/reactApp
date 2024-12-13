@@ -1,4 +1,4 @@
-import LoginUser from "../../../shared/LoginUser.ts";
+import { Login } from "../../../shared/TokenProvider.ts";
 
 const SingUpUrl="https://localhost:7001/User/add";
 
@@ -21,7 +21,7 @@ async function SingUpUser(name: string, email: string, pass: string)
 
   if(responseAdd.ok)
   {
-    const responseLogin = await LoginUser(email, pass);
+    const responseLogin = await Login(email, pass);
     return responseLogin;
   }
   return responseAdd.status;
