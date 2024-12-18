@@ -31,11 +31,13 @@ function FormToLogin()
         }
       const response: number = await Login(email, pass);
       
-      if((response===400) || (response===401))
-        setStatus("Неверный логин или пароль");
       if(response===200)
         window.location.replace("http://localhost:3000");
-
+      else if((response===400) || (response===401))
+        setStatus("Неверный логин или пароль");
+      else
+        setStatus("Ошибка сервера");
+      
       return response;
     }
 

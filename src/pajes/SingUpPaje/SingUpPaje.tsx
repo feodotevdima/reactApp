@@ -4,9 +4,7 @@ import FormToSingUp from "./UI/FormToSingUp.tsx";
 function SingUpPaje() 
 {
     return (
-      <div className="SingUpPaje">
         <FormToSingUp />
-      </div>
     );
   }
   

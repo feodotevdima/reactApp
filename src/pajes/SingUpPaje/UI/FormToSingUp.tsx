@@ -34,12 +34,13 @@ function FormToSingUp()
         }
 
       const response: number = await SingUpUser(name, email, pass);
-      
-      if((response===400) || (response===401))
-        setStatus("Пользователь с такой почтой уже есть");
-      
+
       if(response===200)
         window.location.replace("http://localhost:3000");
+      else if((response===400) || (response===401))
+        setStatus("Пользователь с такой почтой уже есть");
+      else
+        setStatus("Ошибка сервера");
 
       return response;
 

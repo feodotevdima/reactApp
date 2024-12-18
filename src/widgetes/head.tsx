@@ -1,7 +1,8 @@
 import React from "react";
 import { useEffect } from "react";
-import LogOutButton from "./components/LogOutButton.tsx";
 import LoginButton from "./components/LoginButton.tsx";
+import DropDown from "./components/DropDown.tsx";
+import "./head.css";
 
 function Head()
 {
@@ -14,8 +15,8 @@ function Head()
     return (
         <header>
             <nav>
-                <a href="http://localhost:3000/">Главная</a>
-                {auth ? <LogOutButton /> : <LoginButton />}
+                <a href="http://localhost:3000">Главная</a>
+                {auth ? <DropDown /> : <LoginButton />}
             </nav>
         </header>
     );

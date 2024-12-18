@@ -1,0 +1,33 @@
+.wishButton{
+    height: 30px;
+    width: 30px;
+    border-radius: 100%;
+    padding: 0px 0px;
+    margin: 40px 10px 3px 20px;
+    top: 10;
+}
+
+.wishs{
+    border: 2px;
+    border-color: rgba(206, 244, 255, 0.836);
+    border-style: solid;
+    margin: 0px 10px 10px 0;
+    border-radius: 15px;
+    background-color: rgb(64, 65, 65);
+    padding: 10px 10px 10px 10px;
+}
+
+ul{
+    list-style-type:  none;
+    font-size: 30px;
+}
+
+.ListWishs{
+    margin-left: 150px;
+    margin-right: 150px;
+    float: left;
+    display: grid;
+    grid-template-columns: repeat(4, 350px);
+    grid-auto-rows: 250px;
+    grid-auto-flow: row;
+  }

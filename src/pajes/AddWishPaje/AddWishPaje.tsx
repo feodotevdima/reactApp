@@ -32,12 +32,19 @@ function AddWishPaje()
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
     if(sessionStorage.accessToken==null)
-    {
       setStatus("Вы не авторизованны")
-    }
-  
+    if(present=="")
+      setStatus("Вы не ввели название")
+
     const status : number =await addWish(present, price);
+
+    if(status!=200)
+      setStatus("Ошибка сервера")
+
+    if(status==200)
+      window.location.replace("http://localhost:3000/selfWishs");
   }
 
     return (

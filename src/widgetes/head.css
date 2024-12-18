@@ -1,0 +1,35 @@
+
+.menu {
+    position: absolute;
+  
+    top: 60px;
+    right: 10px;
+    padding: 25px;
+    list-style-type: none;
+  
+    border: 2px solid rgba(206, 244, 255, 0.836);
+    border-radius: 15px;
+    background-color: rgb(78,79,79);
+  }
+
+.menuButton{
+    margin-left: auto;
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+}
+
+.menu button:first-child{
+    color: white;
+    background-color: rgb(78,79,79);
+    margin: 15px;
+}
+
+.menu a:first-child{
+    position: relative;
+    float: left;
+
+    color: white;
+    background-color: rgb(78,79,79);
+    margin: 15px;
+}
