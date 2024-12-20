@@ -1,25 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import { getToken, Logout } from "../../shared/TokenProvider.ts";
+import GetId from "../../shared/GetId.ts";
 
-
-async function getUserId()
-{
-  const token= await getToken();
-  const Url="https://localhost:7001/User/"+token;
-  let response = await fetch(Url,
-  {
-    method: "GET",
-    headers:     
-    {
-      'Accept': 'application/json',
-      'Authorization': "Bearer " + token,
-      'Content-Type': 'application/json'
-    },
-  });
-  console.log(response);
-  const j = await response.json();
-  return j;
-}
 
 function useOutsideAlerter(onOutsideClick) {
     const ref = useRef<HTMLDivElement | null>(null);
@@ -49,7 +31,7 @@ const DropDown = () => {
     setOpen(!open);
   };
   const get = async () =>{
-    const data = await getUserId()
+    const data = await GetId()
     setId(data.id);
   }
   get();

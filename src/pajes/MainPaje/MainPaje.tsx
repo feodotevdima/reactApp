@@ -34,7 +34,9 @@ function MainPaje()
     }
     get();
   }, []);
-
+  if(wish[0][0].id==0)
+    return(<></>);
+  
   const listItems = wish.map((wis) =>
     <ul key={wis[0].userId}>
       <li>

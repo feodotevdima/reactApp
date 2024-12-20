@@ -84,7 +84,6 @@ const TokenProvider = () => {
         {
             setToken(null, null)
         }
-        console.log(response)
     }       
 
     return {
