@@ -1,0 +1,23 @@
+.profile{
+    background-color: rgb(78,79,79);
+    border-radius: 15px;
+    padding: 30px 40px;
+}
+
+.profile input{
+    float: right;
+    border-radius: 5px;
+    font-size: 20px;
+    margin: 5px 0px;
+    border: 0;
+    text-align: center;
+    background-color: rgb(78,79,79);
+    color: white;
+}
+input:focus{
+    outline-color: white;
+}
+
+.email{
+    font-size: 25 px;
+}

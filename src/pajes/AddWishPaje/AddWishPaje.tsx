@@ -1,6 +1,8 @@
 import React from "react";
 import Eror from "../../shared/Eror.tsx";
 import { getToken } from "../../shared/TokenProvider.ts";
+import GetId from "../../shared/GetId.ts";
+
 const SingUpUrl="https://localhost:7003/Wish";
 
 async function addWish(present : string, price: number)
@@ -32,6 +34,8 @@ function AddWishPaje()
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    const data = await GetId();
+    const id = data.id;
 
     if(sessionStorage.accessToken==null)
       setStatus("Вы не авторизованны")
@@ -44,7 +48,7 @@ function AddWishPaje()
       setStatus("Ошибка сервера")
 
     if(status==200)
-      window.location.replace("http://localhost:3000/selfWishs");
+      window.location.replace("http://localhost:3000/wishs/"+id);
   }
 
     return (

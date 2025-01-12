@@ -1,45 +1,30 @@
 import React from "react";
 import { useParams } from "react-router-dom";
-import GetWishs from "./API/GetWishs.ts";
 import GetId from "../../shared/GetId.ts";
 import { getToken } from "../../shared/TokenProvider.ts";
+import SelfPaje from "./UI/SelfPaje.tsx";
+import UserPaje from "./UI/UserPaje.tsx";
+import "./WishPaje.css";
 
-
-const uId = async () =>{
-    const token= await getToken();
-    if(token==null)
-      return null
-    const data = await GetId()
-    console.log(data)
-    return data.id
-}
 
 function WishsPaje() 
 {
     const params = useParams();
     const id = params.id;
     const [userId, setId] = React.useState(0);
-    const i = async () =>{console.log(await GetWishs(id))}
-    //i();
 
     const uId = async () =>{
         const token= await getToken();
         if(token==null)
           return null;
         const data = await GetId();
-        setId(data)
+        setId(data.id)
     }
     uId();
-    console.log(userId)
 
-    if (id) {
-        console.log(userId);
-        console.log(id);
-        if(userId==Number(id))
-        {
-            return(<h1>dgasgfa</h1>);
-        }
-        return(<h1>{id}</h1>);
+    if (id)
+    {
+        return(<>{String(userId)===id ? <SelfPaje id={id} /> : <UserPaje id={id}/>}</>);
     }
     else
         window.location.replace("https:/localhost3000/eror");

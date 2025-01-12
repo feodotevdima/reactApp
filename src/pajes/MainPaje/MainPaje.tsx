@@ -34,14 +34,22 @@ function MainPaje()
     }
     get();
   }, []);
+
+  if(wish.length<1)
+    {
+      return(<></>);   
+    }
+
   if(wish[0][0].id==0)
     return(<></>);
   
   const listItems = wish.map((wis) =>
     <ul key={wis[0].userId}>
       <li>
-        <button className="wishButton"></button>
-        {wis[0].userName}
+        <a href={"http://localhost:3000/profile/"+wis[0].userId}>
+          <button className="wishButton"></button>
+          {wis[0].userName}
+        </a>
       </li>
       <li>
         <ul className="wishs" >

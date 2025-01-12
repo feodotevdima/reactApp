@@ -58,7 +58,7 @@ function FormToSingUp()
           </p>
           <p>
             <label>Почта </label>
-            <input type="text" value={email} onChange={(e) => setEmail(e.target.value)}></input>
+            <input type="email" value={email} onChange={(e) => setEmail(e.target.value)}></input>
           </p>
           <p>
             <label>Пароль </label>

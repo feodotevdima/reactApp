@@ -1,4 +1,4 @@
-const TokenProvider = () => {
+function TokenProvider(){
 
     const getExpirationDate = (jwtToken?) => {
         if ((jwtToken==null) || (jwtToken=="")|| (jwtToken==" ")) {
@@ -17,21 +17,33 @@ const TokenProvider = () => {
     };
 
 
-    const getToken = async () => {
-        if (sessionStorage.accessToken==null || sessionStorage.accessToken=="" || sessionStorage.accessToken==" ") {
+    const getToken = async () => 
+    {
+        if (sessionStorage.accessToken==null || sessionStorage.accessToken=="" || sessionStorage.accessToken==" ") 
             return null;
-        }  
-        if (isExpired(getExpirationDate(sessionStorage.accessToken))) {
+ 
+        if (isExpired(getExpirationDate(sessionStorage.accessToken))) 
+        {
+            if (!isExpired(getExpirationDate(sessionStorage.accessToken))) 
+                return sessionStorage.accessToken;
+
             const updatedToken = await fetch("https://localhost:7002/Auth/refreshToken/"+sessionStorage.refreshToken, {method: 'PUT',});
             if (updatedToken.status!==200)
             {
-                setToken(null, null);
-                return null
+                if (isExpired(getExpirationDate(sessionStorage.accessToken))) 
+                {
+                    setToken(null, null);
+                    return;
+                }
+                else return sessionStorage.accessToken;
             }
-            const j = await updatedToken.json()
-            setToken(j.accessToken, j.refreshToken);
+            if (updatedToken.status===200)
+            {
+                const j = await updatedToken.json()
+                setToken(j.accessToken, j.refreshToken);
+            }
         }
-        return sessionStorage.accessToken;
+        return sessionStorage.accessToken;       
     };
 
     const setToken = (accessToken, refreshToken) => {

@@ -45,6 +45,21 @@ a{
     text-align: center;
 }
 
+.OkFon{
+    background-color: rgb(16, 219, 118);
+    border: 2px solid rgb(140, 221, 33);
+    color: rgb(0, 0, 0);
+    border-radius: 15px;
+    padding: 12px 55px;
+    font-weight: bold;
+
+    position: absolute;
+    top: 25%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
 header{
     background-color: rgb(78,79,79);
     overflow: hidden;

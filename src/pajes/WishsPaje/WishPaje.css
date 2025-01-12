@@ -1,0 +1,39 @@
+.selfWish{
+    background-color: rgb(64, 65, 65);
+    padding: 20px;
+    border-radius: 15px;
+    margin-right: 30%;
+    margin-left: 10%;
+}
+.changeButton{
+    float: right;
+    margin-right: 50px;
+    height: 55px;
+    width: 180px;
+    /* margin-bottom: 500px;  */
+}
+.delButton{
+    margin-right: 100px;
+    height: 55px;
+    width: 180px;
+    float: right;
+    /* margin-top: 50px; */
+}
+
+.H{
+    margin-left: 25%;
+}
+.changeButton a{
+    color: #000;
+}
+.UserWish{
+    background-color: rgb(64, 65, 65);
+    padding: 20px;
+    padding-left: 100px;
+    border-radius: 15px;
+    margin-right: 30%;
+    margin-left: 10%;
+}
+.UserWish button{
+    margin-top: 20px;
+}

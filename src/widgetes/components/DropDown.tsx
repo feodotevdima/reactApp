@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from "react";
-import { getToken, Logout } from "../../shared/TokenProvider.ts";
+import {Logout} from "../../shared/TokenProvider.ts";
 import GetId from "../../shared/GetId.ts";
 
 
@@ -50,13 +50,16 @@ const DropDown = () => {
             <a href={"http://localhost:3000/profile/"+id}>Профиль</a>
           </li>
           <li>
-          <a href={"http://localhost:3000/wishs/"+id}>Список желаний</a>
+            <a href={"http://localhost:3000/wishs/"+id}>Список желаний</a>
           </li>
           <li>
-          <a href="http://localhost:3000/add">Добавить желание</a>
+            <a href="http://localhost:3000/add">Добавить желание</a>
           </li>
           <li>
-          <a href="#" onClick={logout}>Выйти</a>
+            <a href={"http://localhost:3000/reserv/"+id}>Забронированные подарки</a>
+          </li>
+          <li>
+            <a href="#" onClick={logout}>Выйти</a>
           </li>
         </ul>
       ) : null}

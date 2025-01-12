@@ -8,6 +8,8 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Head from '../widgetes/head.tsx';
 import WishsPaje from '../pajes/WishsPaje/WishsPaje.tsx';
 import ProfilePaje from '../pajes/ProfilePaje/ProfilePaje.tsx';
+import ReservPaje from '../pajes/ReservPaje/ReservPaje.tsx';
+import ChangePage from '../pajes/ChangePaje/ChangePaje.tsx';
 
 function App() 
 {
@@ -24,7 +26,9 @@ function App()
           <Route path="/" element={<MainPaje />} />
           <Route path="/add" element={<AddWishPaje />} />
           <Route path="/wishs/:id" element={<WishsPaje />} />
+          <Route path="/reserv/:id" element={<ReservPaje />} />
           <Route path="/profile/:id" element={<ProfilePaje />} />
+          <Route path="/change/:id" element={<ChangePage />} />
         </Routes>
       </BrowserRouter>
       </div>

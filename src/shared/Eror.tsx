@@ -4,6 +4,12 @@ function Eror(props)
 {
   if(props.text==="")
     return null
+  if(props.text==="Успех")
+    return (
+      <div>
+        <p className="OkFon">{props.text}</p>
+      </div>
+    );
   return (
     <div>
       <p className="errorFon">{props.text}</p>

@@ -48,7 +48,7 @@ function FormToLogin()
           <h3>Вход</h3>
           <p>
             <label>Почта </label>
-            <input type="text" value={email} onChange={(e) => setEmail(e.target.value)}></input>
+            <input type="email" value={email} onChange={(e) => setEmail(e.target.value)}></input>
           </p>
           <p>
             <label>Пароль </label>
