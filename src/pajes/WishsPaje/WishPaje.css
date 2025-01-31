@@ -5,20 +5,16 @@
     margin-right: 30%;
     margin-left: 10%;
 }
-.changeButton{
-    float: right;
-    margin-right: 50px;
-    height: 55px;
-    width: 180px;
-    /* margin-bottom: 500px;  */
-}
+
 .delButton{
-    margin-right: 100px;
-    height: 55px;
-    width: 180px;
-    float: right;
-    /* margin-top: 50px; */
+    margin-left: 50px;
 }
+
+.delButton,
+.changeButton {
+    margin-right: 25px;
+}
+
 
 .H{
     margin-left: 25%;

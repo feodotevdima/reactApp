@@ -34,6 +34,7 @@ async function ChangeName(id, name)
         name
     )
   });
+  
   if(response1.status==200 && response2.status==200)
     return 200
   return 0
