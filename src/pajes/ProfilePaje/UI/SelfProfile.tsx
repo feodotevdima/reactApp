@@ -59,29 +59,26 @@ function SelfProfile(props)
             setStatus("Ошибка")
       };
 
-        return(
-        <>
-        <Eror text={status} className="er"/>
+    return(
+      <>
+      <Eror text={status}/>
+      <div className="container">
         <form className="profile" onSubmit={handleSubmit}>
-          <p>
-            <label>Почта </label>
-            <code className="email">{email}</code>
-          </p>
-          <p>
-            <label>Имя </label>
-            <input type="text" value={name} onChange={(e) => setName(e.target.value)}></input>
-          </p>
+            <label>Почта: </label> 
+            <code className="email">{email}</code> 
+
+            <label>Имя: </label> 
+            <input type="text" value={name} onChange={(e) => setName(e.target.value)}></input> 
           {(oldName!=name && name.length>0) ? <button type="submit">Изменить имя</button> : <></>}
         </form>
-        <div className="upload">
-          <form onSubmit={Upload} encType="multipart/form-data">
-            <h2>Загрузите своё фото</h2>
-            <input type="file" name="file" />
-            <button type="submit">Upload</button>
-          </form>
-        </div>
-      </>
-        );
+        <form onSubmit={Upload} className="upload" encType="multipart/form-data">
+          <h2>Загрузите своё фото</h2>
+          <input type="file" name="file" />
+          <button type="submit">Upload</button>
+        </form>
+      </div>
+    </>
+    );
 }
 
 export default SelfProfile;

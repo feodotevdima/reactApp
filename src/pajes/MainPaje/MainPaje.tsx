@@ -47,8 +47,10 @@ function MainPaje()
     <ul key={wis[0].userId}>
       <li>
         <a href={"http://localhost:3000/profile/"+wis[0].userId}>
+        <div className="wishText">
           <button className="wishButton"></button>
           {wis[0].userName}
+        </div>
         </a>
       </li>
       <li>

@@ -1,33 +1,95 @@
-.profile{
-    top: 45%;
-    background-color: rgb(78,79,79);
-    border-radius: 15px;
-    padding: 30px 40px;
+.container {
+    /* display: flex;
+    flex-direction: column; */
+    align-items: center;
+    margin-left: 300px;
+    margin-top: 200px;
+    
 }
 
-.profile input{
-    float: right;
+.profile, .upload { 
+    position: static;
+    background-color: rgb(78, 79, 79); 
+    border-radius: 15px; 
+    padding: 30px 20px; 
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5); 
+    max-width: 400px; 
+    margin: 20px auto; /* Центрируем форму и блок загрузки */ 
+} 
+
+.upload { 
+    margin-top: 50px; /* Отступ сверху для блока загрузки */ 
+} 
+
+.profile h2, .upload h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.profile p {
+    margin-bottom: 10px; /* Уменьшили отступы для лучшего восприятия */
+}
+
+.profile label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.profile input {
+    width: calc(100% - 10px);
     border-radius: 5px;
-    font-size: 20px;
-    margin: 5px 0px;
-    border: 0;
-    text-align: center;
-    background-color: rgb(78,79,79);
+    font-size: 16px; /* Уменьшен размер шрифта для лучшей адаптивности */
+    margin: 5px 0;
+    border: 1px solid #ccc;
+    background-color: rgb(64, 65, 65);
     color: white;
-}
-input:focus{
-    outline-color: white;
+    padding: 10px;
 }
 
-.email{
-    font-size: 25 px;
+.profile input::placeholder {
+    color: #aaa;
 }
 
-.upload{
-    position: absolute;
-    top: 70%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
+input:focus {
+    outline: none;
+    border-color: white;
 }
 
+
+.upload input[type="file"] {
+    display: block; /* Делаем файл блочным элементом для лучшего отображения */
+    margin: 10px auto; /* Центрируем поле загрузки файла */
+}
+
+.upload button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+.upload button:hover {
+    background-color: #0056b3;
+}
+
+/* Адаптивность для мобильных устройств */
+@media (max-width: 600px) {
+    .profile, .upload {
+        width: 90%; /* Ширина на мобильных устройствах */
+        padding: 20px; /* Уменьшаем внутренние отступы */
+    }
+
+    .profile input,
+    .upload input[type="file"] {
+        font-size: 14px; /* Уменьшаем размер шрифта */
+        padding: 8px; /* Уменьшаем внутренние отступы */
+    }
+
+    .upload button {
+        width: 100%; /* Кнопка занимает всю ширину на мобильных */
+        padding: 12px; /* Увеличиваем внутренние отступы кнопки */
+        font-size: 16px; /* Увеличиваем размер шрифта кнопки */
+    }
+}

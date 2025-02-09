@@ -31,13 +31,17 @@ function SelfPaje(props) {
         .filter(wish => wish.reservUser == null)
         .map(wish => (
             <ul key={wish.id} className="selfWish"> 
-                <li> 
-                    Подарок: {wish.present} 
-                    <button className="delButton" onClick={() => DelWish(wish.id)}>Удалить</button> 
-                    <button className="changeButton" onClick={() => change(wish)}>Изменить</button> 
+                <li className="ll"> 
+                    <div className="text-container">
+                        <p>Подарок: {wish.present}</p> 
+                        <p>Цена: {wish.price}</p>
+                    </div>
+                    <div className="button-group">
+                        <button className="delButton" onClick={() => DelWish(wish.id)}>Удалить</button> 
+                        <button className="changeButton" onClick={() => change(wish)}>Изменить</button> 
+                    </div>
                 </li> 
                 <li> 
-                    Цена: {wish.price} 
                 </li> 
             </ul>
         )); 
@@ -46,16 +50,16 @@ function SelfPaje(props) {
         .filter(wish => wish.reservUser)
         .map(wish => (
             <ul key={wish.id} className="selfWish"> 
-                <li> 
-                    Подарок: {wish.present} 
-                    <button className="delButton" onClick={() => DelWish(wish.id)}>Удалить</button> 
-                    <button className="changeButton" onClick={() => change(wish)}>Изменить</button> 
-                </li> 
-                <li> 
-                    Цена: {wish.price} 
-                </li> 
-                <li> 
-                    Подарит: {wish.reservUserName} 
+                <li className="ll"> 
+                    <div className="text-container">
+                        <p>Подарок: {wish.present}</p>
+                        <p>Цена: {wish.price}</p>
+                        <p>Подарит: {wish.reservUserName}</p>  
+                    </div>
+                    <div className="button-group">
+                        <button className="delButton" onClick={() => DelWish(wish.id)}>Удалить</button> 
+                        <button className="changeButton" onClick={() => change(wish)}>Изменить</button>
+                    </div> 
                 </li> 
             </ul>
         )); 
