@@ -1,9 +1,8 @@
-.wishButton {  
-    height: 40px; 
-    width: 40px; 
-    border-radius: 50%; 
-    margin: 20px 10px; 
-    background-color: rgba(206, 244, 255, 0.836); 
+.UserImage {  
+    height: 60px; 
+    width: 65px; 
+    border-radius: 35%; 
+    margin: 0px 20px; 
     border: none; 
     cursor: pointer; 
 } 
@@ -70,3 +69,15 @@ ul {
 .ListWishs > li:hover { 
     transform: scale(1.05);
 } 
+
+
+.search{
+    margin-left: 50%;
+    transform: translate(-50%, -50%);
+    margin-top: 50px;
+    background-color: rgb(64, 65, 65);  
+    color: #FFF;
+    width: 250px;
+    height: 20px;
+    border-radius: 5px;  
+}

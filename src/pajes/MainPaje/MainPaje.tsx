@@ -25,7 +25,8 @@ async function getWishs()
 
 function MainPaje() 
 {
-  const[wish, setWish]=React.useState([[{id: 0,userId: 0, userName: "0", present: "0", price: 0}]]);
+  const[wish, setWish]=React.useState([[{id: 0,userId: 0, userName: "0", image: "0", present: "0", price: 0}]]);
+  const [search, setSearch] = React.useState('');
 
   useEffect(()=>{
     const get = async () =>{
@@ -35,6 +36,10 @@ function MainPaje()
     get();
   }, []);
 
+  const filteredWishs = wish.filter(item =>
+    item[0].userName.toLowerCase().includes(search.toLowerCase())
+  );
+
   if(wish.length<1)
     {
       return(<></>);   
@@ -43,13 +48,13 @@ function MainPaje()
   if(wish[0][0].id==0)
     return(<></>);
   
-  const listItems = wish.map((wis) =>
+  const listItems = filteredWishs.map((wis) =>
     <ul key={wis[0].userId}>
       <li>
         <a href={"http://localhost:3000/profile/"+wis[0].userId}>
         <div className="wishText">
-          <button className="wishButton"></button>
-          {wis[0].userName}
+          <img src={"https://localhost:7001/"+wis[0].image} className="UserImage"/>
+            {wis[0].userName}
         </div>
         </a>
       </li>
@@ -62,9 +67,18 @@ function MainPaje()
   );
 
   return (
+    <>
+      <input
+        className="search"
+        type="text"
+        placeholder="Поиск..."
+        value={search}
+        onChange={(e) => setSearch(e.target.value)}
+      />
       <div className="ListWishs">
         {listItems}
       </div>
+      </>
     );
   }
   
