@@ -38,7 +38,7 @@ const DropDown = () => {
 
   const logout = async () =>{
     await Logout();
-    window.location.reload();
+    window.location.replace("http://localhost:3000/")
   }
   const outsideAlerterRef = useOutsideAlerter(() => setOpen(false));
   return (
